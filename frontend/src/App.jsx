@@ -253,20 +253,7 @@ const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user, onLogout 
            </div>
         </div>
         <div className="flex gap-4 md:gap-6 items-center">
-           {user ? (
-             <div className="flex items-center gap-3">
-               <div className="hidden md:flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                 <UserPlus size={18} />
-                 <span className="text-sm font-medium">{user.name || user.email}</span>
-               </div>
-               <button 
-                 onClick={onLogout}
-                 className="px-4 md:px-6 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full font-bold text-sm transition"
-               >
-                 Logout
-               </button>
-             </div>
-           ) : (
+           {!user && (
              <>
                <button 
                  onClick={onOpenAuth}
@@ -358,9 +345,6 @@ const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user, onLogout 
                     Craving delicious meals without the hassle of cooking? Look no further than OrderMeal. 
                     We bring the restaurant experience to your home.
                   </p>
-                  <button onClick={onGetStarted} className="bg-black text-white px-8 py-3 rounded-full font-bold hover:bg-orange-500 hover:text-white transition shadow-lg text-lg">
-                     Explore Menu
-                  </button>
                </div>
                
                <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 relative">
