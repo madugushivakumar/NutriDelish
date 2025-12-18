@@ -254,7 +254,7 @@ const NavButtonMobile = ({ active, onClick, icon }) => (
 
 // --- Landing Page ---
 
-const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user, onLogout }) => {
+const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user, onLogout, onExploreMenu }) => {
   return (
     <div className="font-sans text-gray-800 bg-white overflow-x-hidden">
       {/* Navbar */}
@@ -313,7 +313,7 @@ const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user, onLogout 
                  Discover culinary delights and find your favorite dish with our swift and savory food delivery service.
                </p>
                <button 
-                 onClick={onGetStarted}
+                 onClick={onExploreMenu}
                  className="bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl text-base md:text-lg mt-6 md:mt-8 relative z-30"
                >
                  Explore Menu
@@ -3948,6 +3948,16 @@ export function App() {
      }
   };
 
+  const handleExploreMenu = () => {
+     // If user is logged in, go directly to project
+     if (user) {
+        handleGetStarted();
+     } else {
+        // If not logged in, open auth modal
+        setAuthModalOpen(true);
+     }
+  };
+
   // REMOVED: Loading screen - always show content immediately with mock data
   // No loading state blocking - app always renders immediately
 
@@ -3960,6 +3970,7 @@ export function App() {
            onOpenAuth={() => setAuthModalOpen(true)}
            user={user}
            onLogout={handleLogout}
+           onExploreMenu={handleExploreMenu}
          />
          <AuthModal 
            isOpen={authModalOpen}
