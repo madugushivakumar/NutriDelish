@@ -88,7 +88,9 @@ const Navbar = ({
   userLocation,
   onChangeLocation,
   onBackToLanding,
-  isGenerating
+  isGenerating,
+  user,
+  onLogout
 }) => (
   <nav className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm py-4">
     <div className="w-full max-w-[95%] 2xl:max-w-[1800px] mx-auto px-6 md:px-12">
@@ -154,6 +156,20 @@ const Navbar = ({
 
         {/* Actions */}
         <div className="flex items-center space-x-4 flex-shrink-0">
+          {user && (
+            <div className="hidden md:flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full">
+              <UserPlus size={18} className="text-gray-600" />
+              <span className="text-sm font-medium text-gray-700">{user.name || user.email}</span>
+            </div>
+          )}
+          {user && onLogout && (
+            <button 
+              onClick={onLogout}
+              className="hidden md:block px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-bold text-sm transition"
+            >
+              Logout
+            </button>
+          )}
           <div className="hidden sm:flex items-center bg-black text-white px-5 py-2.5 rounded-full cursor-pointer hover:bg-orange-500 transition shadow-lg" onClick={() => onViewChange('wallet')}>
             <Wallet className="h-5 w-5 mr-2" />
             <span className="font-bold text-lg">INR {balance.toFixed(0)}</span>
@@ -220,7 +236,7 @@ const NavButtonMobile = ({ active, onClick, icon }) => (
 
 // --- Landing Page ---
 
-const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user }) => {
+const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user, onLogout }) => {
   return (
     <div className="font-sans text-gray-800 bg-white overflow-x-hidden">
       {/* Navbar */}
@@ -243,6 +259,12 @@ const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user }) => {
                  <UserPlus size={18} />
                  <span className="text-sm font-medium">{user.name || user.email}</span>
                </div>
+               <button 
+                 onClick={onLogout}
+                 className="px-4 md:px-6 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full font-bold text-sm transition"
+               >
+                 Logout
+               </button>
              </div>
            ) : (
              <>
@@ -286,17 +308,15 @@ const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user }) => {
                <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold leading-[0.9]">
                  ORDER FOOD <br/> TO YOUR DOOR
                </h1>
-               <p className="text-gray-300 max-w-md text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+               <p className="text-gray-300 max-w-md text-base md:text-lg leading-relaxed">
                  Discover culinary delights and find your favorite dish with our swift and savory food delivery service.
                </p>
-               <div className="mt-6 md:mt-8">
-                 <button 
-                   onClick={onGetStarted}
-                   className="bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl text-base md:text-lg"
-                 >
-                   Explore Menu
-                 </button>
-               </div>
+               <button 
+                 onClick={onGetStarted}
+                 className="bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl text-base md:text-lg mt-6 md:mt-8"
+               >
+                 Explore Menu
+               </button>
             </div>
             
             <div className="relative flex justify-center animate-in zoom-in duration-1000">
@@ -3641,12 +3661,17 @@ export function App() {
 
   const handleLoginSuccess = (userData) => {
     setUser(userData);
+    // Navigate to project after login/registration
+    setShowLanding(false);
+    setCurrentView('home');
   };
 
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem('user');
     localStorage.removeItem('userId');
+    // Navigate back to landing page on logout
+    setShowLanding(true);
   };
 
 
@@ -3932,6 +3957,7 @@ export function App() {
            allDishes={allDishes} 
            onOpenAuth={() => setAuthModalOpen(true)}
            user={user}
+           onLogout={handleLogout}
          />
          <AuthModal 
            isOpen={authModalOpen}
