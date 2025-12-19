@@ -313,14 +313,9 @@ const LandingPage = ({ onGetStarted, allDishes = [], onOpenAuth, user, onLogout,
                  Discover culinary delights and find your favorite dish with our swift and savory food delivery service.
                </p>
                <button 
-<<<<<<< HEAD
-                 onClick={onExploreMenu}
-                 className="bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl text-base md:text-lg mt-6 md:mt-8 relative z-30"
-=======
                  onClick={onGetStarted}
                  className="bg-white text-black px-6 md:px-10 py-3 md:py-4 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl mt-4 md:mt-6 text-base md:text-lg inline-block"
                  //className="bg-white text-black px-6 md:px-10 py-3 md:py-4 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl mt-4 md:mt-6 text-base md:text-lg inline-block"
->>>>>>> feature/UIchanged
                >
                  Explore Menu
                </button>
