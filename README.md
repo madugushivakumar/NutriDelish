@@ -1,6 +1,3 @@
-
-Here’s a **clean, professional README.md** you can directly use for **NutriDelish**, based on what’s visible in the repository and formatted for recruiters + GitHub clarity.
-
 ---
 
 # NutriDelish
