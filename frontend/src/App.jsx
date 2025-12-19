@@ -97,7 +97,7 @@ const Navbar = ({
         <div className="flex items-center cursor-pointer flex-shrink-0" onClick={onBackToLanding}>
            <div className="bg-orange-500 rounded-full p-2 mr-3"><Utensils size={24} className="text-white"/></div>
            <span className="text-3xl font-bold font-serif text-black tracking-tight hidden sm:block">
-             ORDER MEAL
+            NutriDelish
            </span>
         </div>
 
@@ -228,7 +228,7 @@ const LandingPage = ({ onGetStarted, allDishes = [] }) => {
         <div className="flex gap-8 items-center">
            <div className="text-4xl font-bold tracking-tighter flex items-center gap-2 font-serif cursor-pointer" onClick={onGetStarted}>
              <div className="bg-orange-500 rounded-full p-2"><Utensils size={28} className="text-white"/></div>
-             ORDER MEAL
+             NutriDelish
            </div>
            <div className="hidden md:flex gap-8 text-xl font-bold tracking-wide">
              <button onClick={onGetStarted} className="hover:text-orange-400 transition">Home</button>
@@ -269,6 +269,7 @@ const LandingPage = ({ onGetStarted, allDishes = [] }) => {
                <button 
                  onClick={onGetStarted}
                  className="bg-white text-black px-6 md:px-10 py-3 md:py-4 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl mt-4 md:mt-6 text-base md:text-lg inline-block"
+                 //className="bg-white text-black px-6 md:px-10 py-3 md:py-4 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors duration-200 shadow-lg hover:shadow-xl mt-4 md:mt-6 text-base md:text-lg inline-block"
                >
                  Explore Menu
                </button>
@@ -296,7 +297,7 @@ const LandingPage = ({ onGetStarted, allDishes = [] }) => {
          {/* Bottom Wave */}
          <div className="absolute bottom-0 left-0 w-full leading-none z-20">
             <svg viewBox="0 0 1440 320" className="w-full h-24 md:h-48 block" preserveAspectRatio="none">
-              <path fill="#ffffff" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+              <path fill="#ffffff" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z2"></path>
             </svg>
          </div>
       </div>
@@ -534,7 +535,7 @@ const LandingPage = ({ onGetStarted, allDishes = [] }) => {
           <div className="w-full max-w-[95%] 2xl:max-w-[1800px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
              <div className="text-3xl font-bold tracking-tighter flex items-center gap-2 font-serif">
                <div className="bg-orange-500 rounded-full p-2"><Utensils size={20} className="text-white"/></div>
-               ORDER MEAL
+            NutriDelish
              </div>
              
              <div className="flex flex-col md:flex-row gap-8 text-lg font-medium text-gray-400">
